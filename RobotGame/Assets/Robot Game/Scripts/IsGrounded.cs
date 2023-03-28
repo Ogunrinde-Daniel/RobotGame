@@ -6,25 +6,15 @@ public class IsGrounded : MonoBehaviour
 {
     private BoxCollider2D boxCollider;
     public bool is_Grounded = false;
+    public LayerMask groundMask;
     void Start()
     {
         boxCollider = GetComponent<BoxCollider2D>();
     }
 
-    private void OnTriggerEnter2D(Collider2D collision)
+    private void Update()
     {
-        if (collision.tag == "Platform")
-        {
-            is_Grounded = true;
-        }
-
+        is_Grounded = Physics2D.BoxCast(boxCollider.bounds.center, boxCollider.bounds.size, 0f, Vector2.down, 0.2f, groundMask);
     }
-
-    private void OnTriggerExit2D(Collider2D collision)
-    {
-        if (collision.tag == "Platform")
-        {
-            is_Grounded = false;
-        }
-    }
+    
 }

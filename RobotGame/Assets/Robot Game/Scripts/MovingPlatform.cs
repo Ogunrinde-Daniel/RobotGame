@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class MovingPlatform : MonoBehaviour
 {
@@ -21,6 +22,11 @@ public class MovingPlatform : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        }
+
         if (goingRight && Vector2.Distance(transform.position, rightBorderPoint) < 0.1f)
         {
             goingRight = false;

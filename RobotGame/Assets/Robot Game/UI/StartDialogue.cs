@@ -15,4 +15,14 @@ public class StartDialogue : MonoBehaviour
         if (collision.gameObject.tag == "Player")
             levelDialogues.TriggerDialogue(level);
     }
+    
+    void OnTriggerExit2D(Collider2D other)
+    {
+        if (other.gameObject.tag == "Player")
+            FindObjectOfType<DialogueManager>().SkipDialogue();
+    }
+
+
+
+
 }
