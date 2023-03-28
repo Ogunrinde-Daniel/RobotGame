@@ -4,16 +4,19 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Tile
+  - Saw
+  - RobotWeakPoint
+  - RobotEnemy
+  - Platform
   layers:
   - Default
   - TransparentFX
   - Ignore Raycast
-  - 
+  - Player
   - Water
   - UI
-  - 
-  - 
+  - Platform
+  - Saw
   - 
   - 
   - 
@@ -50,4 +53,7 @@ TagManager:
     locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 2907926013
     locked: 0
