@@ -31,7 +31,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (beginPatrol == true)
         {
-
             float leftBorderPos = leftBorder.transform.position.x;
             float rightBorderPos = rightBorder.transform.position.x;
 
