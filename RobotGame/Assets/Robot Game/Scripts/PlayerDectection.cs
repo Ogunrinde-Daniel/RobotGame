@@ -7,7 +7,7 @@ public class PlayerDectection : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player") && GetComponentInParent<EnemyMovement>() != null)
+        if ((collision.CompareTag("Player") || collision.CompareTag("PlayerLeg")) && GetComponentInParent<EnemyMovement>() != null)
         {
             GetComponentInParent<EnemyMovement>().BeginPatrol();
         }
