@@ -9,6 +9,7 @@ TagManager:
   - RobotEnemy
   - Platform
   - Tile
+  - PlayerLeg
   layers:
   - Default
   - TransparentFX
