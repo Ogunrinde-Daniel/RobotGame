@@ -17,6 +17,14 @@ public class EnemyMovement : MonoBehaviour
     private bool _switch = false;
     public bool goToRest = false;
 
+    private float leftBorderPos;
+    private float rightBorderPos;
+
+    private void Start()
+    {
+        leftBorderPos = leftBorder.transform.position.x;
+        rightBorderPos = rightBorder.transform.position.x;
+    }
     void Update()
     {
         
@@ -31,9 +39,6 @@ public class EnemyMovement : MonoBehaviour
     {
         if (beginPatrol == true)
         {
-            float leftBorderPos = leftBorder.transform.position.x;
-            float rightBorderPos = rightBorder.transform.position.x;
-
             if (!_switch)
             {
                 if (wheel.transform.position.x <= rightBorderPos)
@@ -45,12 +50,12 @@ public class EnemyMovement : MonoBehaviour
                 {
                     body.transform.localScale = new Vector3(-body.transform.localScale.x, body.transform.localScale.y, body.transform.localScale.z);
                     _switch = true;
-                    if (goToRest)
-                    {
-                        beginPatrol = false;
-                        GetComponentInChildren<Animator>().SetBool("OpenEye", false);
-                    }
 
+                }
+                if (goToRest)
+                {
+                    turnOffRobot();
+                    return;
                 }
             }
 
@@ -66,6 +71,11 @@ public class EnemyMovement : MonoBehaviour
                     body.transform.localScale = new Vector3(-body.transform.localScale.x, body.transform.localScale.y, body.transform.localScale.z);
                     _switch = false;
                 }
+                if (goToRest)
+                {
+                    turnOffRobot();
+                    return;
+                }
             }
 
             //rotate wheel
@@ -78,6 +88,7 @@ public class EnemyMovement : MonoBehaviour
     {
         Invoke(nameof(LateBeginPatrol), 0.5f);
         GetComponentInChildren<Animator>().SetBool("OpenEye", true);
+        wheel.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Dynamic;
     }
 
     private void LateBeginPatrol()
@@ -90,6 +101,14 @@ public class EnemyMovement : MonoBehaviour
     public void EndPatrol()
     {
         goToRest = true;
+    }
+
+    public void turnOffRobot()
+    {
+        beginPatrol = false;
+        wheel.GetComponent<Rigidbody2D>().velocity = new Vector2(0, 0);
+        GetComponentInChildren<Animator>().SetBool("OpenEye", false);
+        wheel.GetComponent<Rigidbody2D>().bodyType = RigidbodyType2D.Kinematic;
     }
 
 
