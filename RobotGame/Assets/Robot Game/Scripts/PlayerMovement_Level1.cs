@@ -9,8 +9,12 @@ public class PlayerMovement_Level1 : MonoBehaviour
     [SerializeField] private float jumpForce;
     [SerializeField] private float rotateSpeed;
 
-    [SerializeField] private LayerMask groundLayerMask;
     [SerializeField] private IsGrounded isGrounded;
+    [SerializeField] private LayerMask groundLayerMask;
+
+    private TouchManager touchManager;
+
+
 
     //Input
     private float dirX;
@@ -25,16 +29,23 @@ public class PlayerMovement_Level1 : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
         rotation = gameObject.AddComponent<Rotation>();
         rotation.speed = 0;
+
+        touchManager = FindObjectOfType<TouchManager>();
+
     }
 
 
     void Update()
     {
         //get horizontal axis-- arrow keys/AD
-        dirX = Input.GetAxis("Horizontal");
-       
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded.is_Grounded)
+        if(Application.isMobilePlatform)
+            dirX = touchManager.getXAxis();
+        else
+            dirX = Input.GetAxis("Horizontal");
+
+        if ((Input.GetKeyDown(KeyCode.Space) || touchManager.getJump()) && isGrounded.is_Grounded)
         {
+            touchManager.setJump(false);
             jump = true;
         }
 
