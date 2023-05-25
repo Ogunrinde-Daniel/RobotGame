@@ -43,6 +43,7 @@ public class PlayerMovement_Level1 : MonoBehaviour
         else
             dirX = Input.GetAxis("Horizontal");
 
+
         if ((Input.GetKeyDown(KeyCode.Space) || touchManager.getJump()) && isGrounded.is_Grounded)
         {
             touchManager.setJump(false);
