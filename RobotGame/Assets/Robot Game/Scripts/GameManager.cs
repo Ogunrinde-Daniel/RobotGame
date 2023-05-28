@@ -36,6 +36,16 @@ public class GameManager : MonoBehaviour
         if (levelTimer.isGameOver)
         {
             GameOver();
+            //this might have to be removed in the future
+            if (Input.touchCount > 0)
+            {
+                Touch touch = Input.GetTouch(0);
+
+                if (touch.phase == TouchPhase.Began)
+                {
+                    RestartGame();
+                }
+            }
         }
     }
 

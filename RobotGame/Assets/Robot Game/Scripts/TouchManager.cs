@@ -14,12 +14,15 @@ public class TouchManager : MonoBehaviour
     private Vector2 moveValue;
     private bool jump;
 
+    private DialogueManager dialogueManager;
+
     private void Awake()
     {
         InputUI.SetActive(Application.isMobilePlatform);
         playerInput = GetComponent<PlayerInput>();
         moveAction = playerInput.actions.FindAction("Move");
         jumpAction = playerInput.actions.FindAction("Jump");
+        dialogueManager = FindObjectOfType<DialogueManager>();  
     }
     private void OnEnable()
     {
@@ -34,6 +37,12 @@ public class TouchManager : MonoBehaviour
         jumpAction.performed -= JumpPressed;
         jumpAction.canceled -= JumpReleased;
     }
+    private void Update()
+    {
+        if(Application.isMobilePlatform)
+            InputUI.SetActive(!dialogueManager.dialogueOn);
+    }
+
     private void MovePressed(InputAction.CallbackContext context)
     {
         moveValue = context.ReadValue<Vector2>();

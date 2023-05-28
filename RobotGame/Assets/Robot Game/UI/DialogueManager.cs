@@ -23,6 +23,9 @@ public class DialogueManager : MonoBehaviour
 
     public  float letterDelay = 0.01f;
     public  float SentenceDelay = 0.01f;
+
+
+    public bool dialogueOn = false;
     void Start()
     {
         sentences = new Queue<string>();
@@ -33,6 +36,7 @@ public class DialogueManager : MonoBehaviour
 
     public void StartDialogue(Dialogue dialogue)
     {
+        dialogueOn = true;
         DialogueBoxAnimator.SetBool("IsOpen", true);
         DialogueImagesAnimator.SetBool("IsOpen", true);
 
@@ -94,6 +98,7 @@ public class DialogueManager : MonoBehaviour
 
     void EndDialogue()
     {
+        dialogueOn = false;
         DialogueBoxAnimator.SetBool("IsOpen", false);
         DialogueImagesAnimator.SetBool("IsOpen", false);
     }
