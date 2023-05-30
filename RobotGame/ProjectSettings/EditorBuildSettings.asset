@@ -8,6 +8,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Robot Game/Scenes/Level1.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Robot Game/Scenes/Menu Scene.unity
+    guid: adcd517b2e2eca04d8870992100e31f4
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e59a3b8f6ee960949a8734a466d37297, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 7550e4df45d8bb04f9e71070d95b6554, type: 2}
