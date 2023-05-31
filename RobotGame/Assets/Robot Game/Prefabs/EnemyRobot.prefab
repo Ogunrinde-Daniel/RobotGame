@@ -42,7 +42,7 @@ PolygonCollider2D:
   m_GameObject: {fileID: 814568104356204909}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: 904a33e40bfd509488c64280190e6b09, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
@@ -82,6 +82,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  timeIncrease: 5
   isWeakPoint: 1
   parentGameObject: {fileID: 814568104942094816}
   robotDead: {fileID: 1429954232896169632, guid: 60e98ff90488baf4090558f2d7224232, type: 3}
@@ -838,6 +839,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   damage: 100
+  timeIncrease: 5
   isWeakPoint: 0
   parentGameObject: {fileID: 814568104942094816}
   robotDead: {fileID: 0}

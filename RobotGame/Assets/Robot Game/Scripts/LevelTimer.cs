@@ -10,6 +10,7 @@ public class LevelTimer : MonoBehaviour
     public float timeLeft; // Remaining time in seconds
 
     public bool isGameOver = false; // Flag to track if the game is over
+    public bool puaseTime = false;
 
     private DialogueManager dialogueManager;
     private void Start()
@@ -20,7 +21,7 @@ public class LevelTimer : MonoBehaviour
 
     private void Update()
     {
-        if (!isGameOver)
+        if (!isGameOver && !puaseTime)
         {
             // Update the timer
             if(!dialogueManager.dialogueOn)
