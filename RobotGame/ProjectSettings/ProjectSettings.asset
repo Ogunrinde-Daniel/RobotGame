@@ -253,7 +253,7 @@ PlayerSettings:
   AndroidTargetDevices: 0
   AndroidSplashScreenScale: 0
   androidSplashScreen: {fileID: 0}
-  AndroidKeystoreName: C:/Users/Daniel/Documents/GitHub/RobotGame/#Builds/android
+  AndroidKeystoreName: C:/Users/Daniel/Documents/GitHub/#Builds/#Builds-RobotGame/android
     key/user.keystore
   AndroidKeyaliasName: nova
   AndroidBuildApkPerCpuArchitecture: 0

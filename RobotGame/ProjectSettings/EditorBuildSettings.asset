@@ -6,8 +6,17 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
+    path: Assets/Robot Game/Scenes/Tutorial.unity
+    guid: 584004a2828606a4a9ec81e3d01116af
+  - enabled: 1
     path: Assets/Robot Game/Scenes/Level1.unity
     guid: 3fc8acdd13e6c734bafef6554d6fdbcd
+  - enabled: 1
+    path: Assets/Robot Game/Level 2.unity
+    guid: ea90658bf53dd1c44a8d7e3243ccb52b
+  - enabled: 1
+    path: Assets/Robot Game/Level 3.unity
+    guid: c2548161d74d1a2479c58d0d67e1e3f5
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: e59a3b8f6ee960949a8734a466d37297, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: 7550e4df45d8bb04f9e71070d95b6554, type: 2}

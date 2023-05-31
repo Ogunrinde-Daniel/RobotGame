@@ -13,6 +13,8 @@ public class PlayerMovement_Level1 : MonoBehaviour
     [SerializeField] private LayerMask groundLayerMask;
 
     private TouchManager touchManager;
+    private SoundManager soundManager;
+    private Fall fall;
 
 
 
@@ -31,14 +33,24 @@ public class PlayerMovement_Level1 : MonoBehaviour
         rotation.speed = 0;
 
         touchManager = FindObjectOfType<TouchManager>();
+        soundManager = FindObjectOfType<SoundManager>();
+        fall = FindObjectOfType<Fall>();
 
     }
 
 
     void Update()
     {
+        if (fall != null)
+        {
+            if (fall.falling)
+                speed = Mathf.Min(speed * 30, 8000);
+
+        }
+
+
         //get horizontal axis-- arrow keys/AD
-        if(Application.isMobilePlatform)
+        if (Application.isMobilePlatform)
             dirX = touchManager.getXAxis() * 1.2f;  //I add .5 to the speed to counter the slow movement
         else
             dirX = Input.GetAxis("Horizontal");
@@ -48,6 +60,7 @@ public class PlayerMovement_Level1 : MonoBehaviour
         {
             touchManager.setJump(false);
             jump = true;
+            soundManager.playSfx(SoundManager.SFX_TYPES.jumpMoveSfx);
         }
 
 
