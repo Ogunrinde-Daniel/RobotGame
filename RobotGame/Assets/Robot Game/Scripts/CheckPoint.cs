@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class LastCheckPoint
 {
-    public static Vector3 checkPointPosition = new Vector3(float.NaN, float.NaN, float.NaN);
+    public static Vector3 checkPointPosition = Vector3.zero;
 
 }
 

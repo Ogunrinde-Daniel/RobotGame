@@ -24,9 +24,10 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
-        Debug.Log("Start " + LastCheckPoint.checkPointPosition.x);
-        if (LastCheckPoint.checkPointPosition != null)
+        if (LastCheckPoint.checkPointPosition != Vector3.zero)
         {
+            Debug.Log("Start " + LastCheckPoint.checkPointPosition.x);
+
             player.transform.position = LastCheckPoint.checkPointPosition;
         }
     }
@@ -42,10 +43,10 @@ public class GameManager : MonoBehaviour
         timesUpEffect.SetActive(levelTimer.timeLeft <= 10);
         if (levelTimer.isGameOver)
         {
-            LastCheckPoint.checkPointPosition = new Vector3(float.NaN, float.NaN, float.NaN);
+            LastCheckPoint.checkPointPosition = Vector3.zero;
             GameOver();
             //this might have to be removed in the future
-            if (Input.touchCount > 0)
+            /*if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
 
@@ -53,7 +54,7 @@ public class GameManager : MonoBehaviour
                 {
                     RestartGame();
                 }
-            }
+            }*/
         }
     }
 
@@ -93,8 +94,15 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
     }
 
+    public void TrueRestartGame()
+    {
+        LastCheckPoint.checkPointPosition = Vector3.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+    }
+
     public void LoadLevel(int level)
     {
+        LastCheckPoint.checkPointPosition = Vector3.zero;
         SceneManager.LoadScene(level);
     }
 
