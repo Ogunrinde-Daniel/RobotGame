@@ -126,16 +126,17 @@ public class SoundManager : MonoBehaviour
     {
         if (value == false)
         {
-            walk.Pause();
+            //walk.Pause();
             return;
         }
         if(walk.clip != null) return;
         
-        walk.UnPause();
+        Debug.Log("Entered Walk play");
+        //walk.UnPause();
         int index = Random.Range(0, walkSfx.Length);
         walk.clip = walkSfx[index];
         walk.Play();
-        Invoke(nameof(removeSfxClip), walkSfx[index].length);
+        Invoke(nameof(removeWalkSfxClip), walkSfx[index].length);
 
     }
 
@@ -144,19 +145,19 @@ public class SoundManager : MonoBehaviour
         if (sfx1.clip == null)
         {
             sfx1.clip = sfxToPLay;
-            Invoke(nameof(removeSfxClip), sfxToPLay.length);
+            Invoke(nameof(removeSfx1Clip), sfxToPLay.length);
             sfx1.Play();
         }
         else if (sfx2.clip == null)
         {
             sfx2.clip = sfxToPLay;
-            Invoke(nameof(removeSfxClip), sfxToPLay.length);
+            Invoke(nameof(removeSfx2Clip), sfxToPLay.length);
             sfx2.Play();
         }
         else if (sfx3.clip == null)
         {
             sfx3.clip = sfxToPLay;
-            Invoke(nameof(removeSfxClip), sfxToPLay.length);
+            Invoke(nameof(removeSfx3Clip), sfxToPLay.length);
             sfx3.Play();
         }
 
@@ -164,9 +165,22 @@ public class SoundManager : MonoBehaviour
 
     }
 
-    public void removeSfxClip(AudioSource sourceToClear)
+    public void removeSfx1Clip()
     {
-        sourceToClear.clip = null;
+        sfx1.clip = null;
+    }
+    public void removeSfx2Clip()
+    {
+        sfx2.clip = null;
+    }
+    public void removeSfx3Clip()
+    {
+        sfx3.clip = null;
+    }
+
+    public void removeWalkSfxClip()
+    {
+        walk.clip = null;
     }
 
 
