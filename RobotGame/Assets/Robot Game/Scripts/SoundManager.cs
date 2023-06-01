@@ -131,7 +131,6 @@ public class SoundManager : MonoBehaviour
         }
         if(walk.clip != null) return;
         
-        Debug.Log("Entered Walk play");
         //walk.UnPause();
         int index = Random.Range(0, walkSfx.Length);
         walk.clip = walkSfx[index];

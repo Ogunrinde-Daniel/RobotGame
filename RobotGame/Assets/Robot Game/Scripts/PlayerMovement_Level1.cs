@@ -51,7 +51,7 @@ public class PlayerMovement_Level1 : MonoBehaviour
 
         //get horizontal axis-- arrow keys/AD
         if (Application.isMobilePlatform)
-            dirX = touchManager.getXAxis() * 1.2f;  //I add .5 to the speed to counter the slow movement
+            dirX = touchManager.getXAxis();  //I add .5 to the speed to counter the slow movement
         else
             dirX = Input.GetAxis("Horizontal");
 

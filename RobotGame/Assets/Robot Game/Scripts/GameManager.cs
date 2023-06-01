@@ -24,6 +24,8 @@ public class GameManager : MonoBehaviour
     void Start()
     {
         Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
+
         if (LastCheckPoint.checkPointPosition != Vector3.zero)
         {
             Debug.Log("Start " + LastCheckPoint.checkPointPosition.x);
@@ -109,6 +111,7 @@ public class GameManager : MonoBehaviour
     public void ResumeGame()
     {
         Time.timeScale = 1.0f;
+        Time.fixedDeltaTime = Time.timeScale * 0.02f;
         pauseScreen.SetActive(false);
     }
 
@@ -121,6 +124,11 @@ public class GameManager : MonoBehaviour
     public void QuitGame()
     {
         Application.Quit();
+    }
+
+    public void easyMode()
+    {
+        levelTimer.AddTime(90);
     }
 
 

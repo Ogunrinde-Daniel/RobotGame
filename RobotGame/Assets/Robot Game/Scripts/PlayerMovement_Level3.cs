@@ -27,18 +27,26 @@ public class PlayerMovement_Level3 : MonoBehaviour
     [SerializeField]private float idleFrequency = 3.5f;
 
 
+    private TouchManager touchManager;
+    private SoundManager soundManager;
+
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
         headOffset = head.transform.localPosition;
         bodyOffset = body.transform.localPosition;
 
+        touchManager = FindObjectOfType<TouchManager>();
+        soundManager = FindObjectOfType<SoundManager>();
     }
 
     void Update()
     {
         //get horizontal axis-- arrow keys/AD
-        dirX = Input.GetAxisRaw("Horizontal");
+        if (Application.isMobilePlatform)
+            dirX = touchManager.getXAxis();  //I add .5 to the speed to counter the slow movement
+        else
+            dirX = Input.GetAxisRaw("Horizontal");
 
         isMoving = (dirX != 0);
 
@@ -48,9 +56,11 @@ public class PlayerMovement_Level3 : MonoBehaviour
             transform.localScale = scale;
 
         }
-        if (Input.GetKeyDown(KeyCode.Space) && isGrounded.is_Grounded)
+        if ((Input.GetKeyDown(KeyCode.Space) || touchManager.getJump()) && isGrounded.is_Grounded)
         {
+            touchManager.setJump(false);
             jump = true;
+            soundManager.playSfx(SoundManager.SFX_TYPES.jumpMoveSfx);
         }
 
         //leg animator
@@ -59,6 +69,8 @@ public class PlayerMovement_Level3 : MonoBehaviour
         }else{
             legAnimator.SetBool("Walk", false);
         }
+        soundManager.playWalkLoop(legAnimator.GetBool("Walk"));
+
 
     }
 
