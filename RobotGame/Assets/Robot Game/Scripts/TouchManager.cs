@@ -39,6 +39,7 @@ public class TouchManager : MonoBehaviour
     }
     private void Update()
     {
+        
         if(Application.isMobilePlatform)
             InputUI.SetActive(!dialogueManager.dialogueOn);
     }
@@ -58,7 +59,20 @@ public class TouchManager : MonoBehaviour
 
     public float getXAxis()
     {
-        return moveValue.x;
+        if (moveValue.x < 0.1 && moveValue.x > -0.1)
+        {
+            return 0;
+        }
+        else if (moveValue.x > 0.2)
+        {
+            return 1;
+        }
+        else
+        {
+            return -1;
+        }
+
+;
     }
     public bool getJump()
     {

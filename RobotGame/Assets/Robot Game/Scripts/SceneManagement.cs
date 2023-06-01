@@ -21,7 +21,7 @@ public class SceneManagement : MonoBehaviour
 
     public void Play()
     {
-        SceneManager.LoadScene("Level1");
+        SceneManager.LoadScene(5);
     }
 
     public void Quit()

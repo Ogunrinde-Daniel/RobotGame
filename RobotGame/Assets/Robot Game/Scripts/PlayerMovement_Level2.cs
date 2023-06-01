@@ -50,7 +50,7 @@ public class PlayerMovement_Level2 : MonoBehaviour
 
         //get horizontal axis-- arrow keys/AD
         if (Application.isMobilePlatform)
-            dirX = touchManager.getXAxis() * 1.2f;  //I add .5 to the speed to counter the slow movement
+            dirX = touchManager.getXAxis();  //I add .5 to the speed to counter the slow movement
         else
             dirX = Input.GetAxisRaw("Horizontal");
 
@@ -82,6 +82,7 @@ public class PlayerMovement_Level2 : MonoBehaviour
 
     void FixedUpdate()
     {
+
 
         rb.velocity = new Vector2(speed * dirX * Time.deltaTime, rb.velocity.y);
         if (jump)
